@@ -10,8 +10,9 @@ import com.Uitilities.CommonFunctions;
 
 public class HomePage {
 	
-   public  WebDriver ldriver;
-    CommonFunctions commonFunctions;
+   WebDriver ldriver;
+   CommonFunctions commonFunctions;
+    
 	public HomePage(WebDriver rdriver)
     {
     	ldriver = rdriver;	    	
@@ -55,6 +56,10 @@ public class HomePage {
 	@FindBy(xpath = "//div[@class='search-header__title']/h1")
     WebElement SearchResultPageHeader;
 	
+	public void launchApplication(String url)
+	{
+		ldriver.get(url);
+	}
 	public String getTitleOfPage()
 	{
 		return ldriver.getTitle();

@@ -65,14 +65,14 @@ public class Steps extends BaseClass {
 	}
 	
 	@When("Navigate to home page using {string}")
-	public void navigate_to_home_page_using(String url) {		
-		driver.get(url);
+	public void navigate_to_home_page_using(String url) {
+		homePage = new HomePage(driver);
+		homePage.launchApplication(url);
 
 	}
 	
 	@Then("Verify the title of Page is {string}")
 	public void verify_the_title_of_page_is(String expectedTitle) {
-		homePage = new HomePage(driver);
 		String actualTitle = homePage.getTitleOfPage(); 	
 		Assert.assertTrue(actualTitle.trim().equals(expectedTitle.trim()));
 	}
@@ -123,10 +123,8 @@ public class Steps extends BaseClass {
 	}
 	@Then("Verify The Search Results Page Header")
 	public void verify_the_search_results() {
-
 		
 		String actualSearchResultsHeaderText = homePage.verifySearchResults();	
-		System.out.println(actualSearchResultsHeaderText);
 		if(!typeOfJob.isEmpty() && 
 			!keyWord.isEmpty() &&
 			!location.isEmpty())
